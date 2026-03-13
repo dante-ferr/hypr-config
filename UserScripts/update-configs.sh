@@ -17,8 +17,10 @@ for repo in "${!REPOS[@]}"; do
 
     if [ -d "$target_dir/.git" ]; then
         cd "$target_dir" || continue
+        echo "Updating $target_dir"
+        git checkout master
         git fetch
-        git pull
+        git pull origin master
         cd - > /dev/null || continue
     else
         git clone "$repo_url" "$target_dir"
