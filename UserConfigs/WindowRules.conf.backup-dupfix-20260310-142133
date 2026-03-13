@@ -1,0 +1,29 @@
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+
+# Browser
+windowrulev2 = opacity 0.99 0.90, class:^(firefox|org\.mozilla\.firefox|google-chrome(-beta|-dev|-unstable)?|chromium|Microsoft-edge.*|Brave-browser)$
+
+# Projects / Editors
+windowrulev2 = opacity 0.975 0.95, class:^(code-url-handler|vscode|codium-url-handler|VSCodium)$
+
+# IM / Social
+windowrulev2 = opacity 0.95 0.90, class:^(discord|armcord|webcord|vesktop|TelegramDesktop|org\.telegram\.desktop)$
+
+# Multimedia
+windowrulev2 = opacity 0.95 0.90, class:^(vlc|mpv|Spotify)$
+
+# File Manager
+windowrulev2 = opacity 0.95 0.90, class:^(thunar|nemo|dolphin|org\.gnome\.Nautilus)$
+
+# Terminal
+windowrulev2 = opacity 0.95 0.875, class:^(kitty|foot|Alacritty)$
+
+# System Settings
+windowrulev2 = opacity 0.95 0.875, class:^(nwg-look|qt5ct|qt6ct|org\.pulseaudio\.pavucontrol)$
+
+# Image/Document Viewer
+windowrulev2 = opacity 0.95 0.875, class:^(eog|org\.gnome\.Loupe|org\.pwmt\.zathura)$
+
+# Text Editors & Tools
+windowrulev2 = opacity 0.95 0.875, class:^(gedit|org\.gnome\.TextEditor|mousepad|deluge|seahorse)$
+windowrulev2 = opacity 0.95 0.875, title:^(Picture-in-Picture)$

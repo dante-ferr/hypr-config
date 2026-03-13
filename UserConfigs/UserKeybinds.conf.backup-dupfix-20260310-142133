@@ -1,0 +1,114 @@
+$UserScripts = $HOME/.config/hypr/UserScripts
+
+unbind = Ctrl+Shift, C
+
+
+# --- Apps and utils
+bind = Ctrl+Super, Slash, exec, xdg-open ~/.config/illogical-impulse/config.json # Edit shell config
+bind = Ctrl+Super+Alt, Slash, exec, xdg-open ~/.config/hypr/custom/keybinds.conf # Edit extra keybinds
+
+# Default AI bar <- Execute Floorp
+unbind = Super, B
+bind = Super, B, exec, floorp
+
+# Default browser execution <- Change wallpaper
+unbind = Super, W
+bind = Super, W, exec, waypaper
+
+unbind = Super, T
+
+# Display modes
+bind = Super, F1, exec, nwg-displays-apply -p Horizontal
+bind = Super, F2, exec, nwg-displays-apply -p Vertical
+bind = Super, F3, exec, nwg-displays-apply -p Notebook
+
+# Default file explorer <- exclusively nautilus
+unbind = Super, E
+bind = Super, E, exec, nautilus
+
+# Remove super + s toggle scratchpad to prevent unwanted behavior on select screenshot
+unbind = Super, S
+
+# App launcher
+unbind = $mainMod, D
+bindd  = $mainMod CTRL, Return, app launcher, exec, pkill rofi || true && rofi -show drun -modi drun,filebrowser,run,window
+
+# Modified night light toggle (modified Hyprsunset call)
+unbind = Super, N
+bindd = $mainMod, N, toggle night light, exec, $scriptsDir/Hyprsunset.sh toggle
+
+# Obs studio recording
+bind = $mainMod, KP_Add, exec, bash -c 'obs-cmd recording toggle && notify-send "OBS Studio" "Recording Toggled"'
+
+# --- Workplaces
+#/# bind = Super+Shift, Hash,, # Send to workspace # (1, 2, 3,...)
+bind = Super+Shift, code:10, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 1 # [hidden]
+bind = Super+Shift, code:11, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 2 # [hidden]
+bind = Super+Shift, code:12, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 3 # [hidden]
+bind = Super+Shift, code:13, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 4 # [hidden]
+bind = Super+Shift, code:14, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 5 # [hidden]
+bind = Super+Shift, code:15, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 6 # [hidden]
+bind = Super+Shift, code:16, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 7 # [hidden]
+bind = Super+Shift, code:17, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 8 # [hidden]
+bind = Super+Shift, code:18, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 9 # [hidden]
+bind = Super+Shift, code:19, exec, ~/.config/hypr/hyprland/scripts/workspace_action.sh movetoworkspace 10 # [hidden]
+
+# Go to workspace (Super + Keypad)
+bind = $mainMod, code:87, workspace, 1
+bind = $mainMod, code:88, workspace, 2
+bind = $mainMod, code:89, workspace, 3
+bind = $mainMod, code:83, workspace, 4
+bind = $mainMod, code:84, workspace, 5
+bind = $mainMod, code:85, workspace, 6
+bind = $mainMod, code:79, workspace, 7
+bind = $mainMod, code:80, workspace, 8
+bind = $mainMod, code:81, workspace, 9
+bind = $mainMod, code:90, workspace, 10
+
+# Move window to workspace (Super + Shift + Keypad)
+bindd = $mainMod SHIFT, code:87, move to workspace 1, movetoworkspace, 1 # NOTE: code:10 = key 1
+bindd = $mainMod SHIFT, code:88, move to workspace 2, movetoworkspace, 2 # NOTE: code:11 = key 2
+bindd = $mainMod SHIFT, code:89, move to workspace 3, movetoworkspace, 3 # NOTE: code:12 = key 3
+bindd = $mainMod SHIFT, code:83, move to workspace 4, movetoworkspace, 4 # NOTE: code:13 = key 4
+bindd = $mainMod SHIFT, code:84, move to workspace 5, movetoworkspace, 5 # NOTE: code:14 = key 5
+bindd = $mainMod SHIFT, code:85, move to workspace 6, movetoworkspace, 6 # NOTE: code:15 = key 6
+bindd = $mainMod SHIFT, code:79, move to workspace 7, movetoworkspace, 7 # NOTE: code:16 = key 7
+bindd = $mainMod SHIFT, code:80, move to workspace 8, movetoworkspace, 8 # NOTE: code:17 = key 8
+bindd = $mainMod SHIFT, code:81, move to workspace 9, movetoworkspace, 9 # NOTE: code:18 = key 9
+bindd = $mainMod SHIFT, code:90, move to workspace 10, movetoworkspace, 10 # NOTE: code:19 = key 0
+
+
+# --- Windows
+# Change super+shift+directional to resize
+unbind = Super+Shift, Left
+unbind = Super+Shift, Right
+unbind = Super+Shift, Up
+unbind = Super+Shift, Down
+
+bind = Super+Shift, Left, resizeactive, -64 0
+bind = Super+Shift, Right, resizeactive, 64 0
+bind = Super+Shift, Up, resizeactive, 0 -64
+bind = Super+Shift, Down, resizeactive, 0 64
+
+# Change super+alt+directional to move
+bind = Super+Alt, Left, movewindow, l # [hidden]
+bind = Super+Alt, Right, movewindow, r # [hidden]
+bind = Super+Alt, Up, movewindow, u # [hidden]
+bind = Super+Alt, Down, movewindow, d # [hidden]
+
+# Floating mode
+unbind = Super+Alt, Space
+bind = Super, T, togglefloating, # Float/Tile
+
+# --- Keyboard layout
+input {
+    # List the layouts you want to cycle through (English US and Brazilian ABNT2)
+    kb_layout = us,br
+    
+    # Optional: Define variants. 
+    # The comma "," means "default for US, abnt2 for BR"
+    kb_variant = ,abnt2 
+    
+    # This enables Alt+Shift to toggle between them
+    kb_options = grp:alt_shift_toggle
+}
