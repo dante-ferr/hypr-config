@@ -2,3 +2,6 @@ hosts/current_device.conf
 .env_device
 
 *.log
+
+wallust
+monitors
