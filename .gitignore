@@ -2,3 +2,5 @@ hosts/current_device.conf
 .env_device
 
 *.log
+
+monitors
