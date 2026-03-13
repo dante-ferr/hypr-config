@@ -3,4 +3,5 @@ hosts/current_device.conf
 
 *.log
 
+wallust
 monitors
