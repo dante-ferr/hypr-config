@@ -54,11 +54,11 @@ notify_user() {
     notify-send -u low -i "$notif" " Switching to" " $1 mode"
 }
 
-# Use sed to replace the palette setting in the wallust config file
+# Use sed to replace the style setting in the wallust config file
 if [ "$next_mode" = "Dark" ]; then
-    sed -i 's/^palette = .*/palette = "'"$pallete_dark"'"/' "$wallust_config" 
+    sed -i 's/^style = .*/style = "dark"/' "$wallust_config" 
 else
-    sed -i 's/^palette = .*/palette = "'"$pallete_light"'"/' "$wallust_config" 
+    sed -i 's/^style = .*/style = "light"/' "$wallust_config" 
 fi
 
 # Function to set Waybar style
