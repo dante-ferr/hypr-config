@@ -5,6 +5,17 @@
 SCRIPTSDIR=$HOME/.config/hypr/scripts
 UserScripts=$HOME/.config/hypr/UserScripts
 
+# Prevent concurrent runs of this script by killing the previous running instance
+PID_FILE="/tmp/hypr_refresh_$(whoami).pid"
+if [ -f "$PID_FILE" ]; then
+  OLD_PID=$(cat "$PID_FILE")
+  if [ -n "$OLD_PID" ] && [ "$OLD_PID" -ne "$$" ] && kill -0 "$OLD_PID" 2>/dev/null; then
+    kill "$OLD_PID" 2>/dev/null
+    sleep 0.05
+  fi
+fi
+echo "$$" > "$PID_FILE"
+
 # Define file_exists function
 file_exists() {
   if [ -e "$1" ]; then
