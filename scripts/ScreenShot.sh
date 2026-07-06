@@ -107,15 +107,12 @@ shotwin() {
 }
 
 shotarea() {
-	tmpfile=$(mktemp)
-	grim -g "$(slurp)" - >"$tmpfile"
-
-  # Copy with saving
-	if [[ -s "$tmpfile" ]]; then
-		wl-copy <"$tmpfile"
-		mv "$tmpfile" "$dir/$file"
+	crop_geom=$(slurp)
+	if [[ -n "$crop_geom" ]]; then
+		grim -g "$crop_geom" "$dir/$file"
+		wl-copy < "$dir/$file"
+		notify_view
 	fi
-	notify_view
 }
 
 shotactive() {
@@ -129,14 +126,15 @@ shotactive() {
 }
 
 shotswappy() {
-	tmpfile=$(mktemp)
-	grim -g "$(slurp)" - >"$tmpfile" 
-
-  # Copy without saving
-  if [[ -s "$tmpfile" ]]; then
-		wl-copy <"$tmpfile"
-    notify_view "swappy"
-  fi
+	tmpfile=$(mktemp --suffix=.png)
+	crop_geom=$(slurp)
+	if [[ -n "$crop_geom" ]]; then
+		grim -g "$crop_geom" "$tmpfile"
+		wl-copy < "$tmpfile"
+		notify_view "swappy"
+	else
+		rm -f "$tmpfile"
+	fi
 }
 
 if [[ ! -d "$dir" ]]; then
